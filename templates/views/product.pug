@@ -1,0 +1,21 @@
+extends ../layouts/default
+
+block intro
+    .container
+        p: a(href="/products") &larr; Back to products
+        h1= data.product.title
+
+block content
+    .container: .row
+        .col-sm-6.col-md-6
+            if data.product.images.exists
+            img(src=data.product.images.url).card-img-top.img-responsive
+        .col-sm-6.col-md-6
+            ul.list-group
+                li.list-group-item
+                    strong Price: $#{data.product.price}
+                li.list-group-item
+                    strong Qty: #{data.product.qty}
+            .well
+                != data.product.description
+            a(href='/contact').btn.btn-success.btn-block Ask about this product

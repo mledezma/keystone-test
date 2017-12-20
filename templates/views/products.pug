@@ -1,0 +1,18 @@
+extends ../layouts/default
+
+block intro
+    .container
+        h1 Products
+
+block content
+    .container
+        .row
+            .col-sm-12.col-md-12.col-lg-12
+                .row
+                    if products.length
+                        each product in products
+                            div(style="width: 20rem").card.col-sm-4.col-md-4.col-lg-4
+                                if product.images.exists
+                                    img(src=product.images.url width="200").card-img-top
+                                    .card-block
+                                        h2.card-title: a(href='/products/' + product.slug)= product.title
